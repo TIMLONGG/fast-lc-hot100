@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 """
-智能刷题复习推荐系统 v2.1
+智能刷题复习推荐系统 v3.0
 ========================
-采用多因子加权评分模型，为每道题目计算综合「紧迫度分数」，取 Top-N 推荐。
-如果明天的 notebook 文件不存在，自动生成一份包含推荐题目的 ipynb。
+基于 1-5 掌握度分数 + EMS(有效掌握度) + 间隔复习 的推荐引擎。
+
+评分标尺:
+  5 = 秒杀    4 = 顺畅    3 = 通过    2 = 艰难    1 = 未通过
+
+核心算法:
+  1. EMS (Effective Mastery Score): EWMA + 历史债务衰减
+  2. 间隔复习: 基于 EMS 动态计算复习间隔
+  3. 紧迫度: overdue_ratio * difficulty_weight * (6 - EMS)
 """
 
 import re
@@ -15,18 +22,21 @@ import os
 from collections import defaultdict
 
 # --- 配置区 ---------------------------------------------------------------
-FORGETTING_THRESHOLD_DAYS = 7   # 多少天后才触发"遗忘风险"
-HOT_IRON_WINDOW_DAYS = 3        # "趁热打铁"窗口 (天)
-NUM_RECOMMEND = 3               # 推荐题目数量
+NUM_RECOMMEND = 3
+EWMA_ALPHA = 0.5          # 指数加权移动平均的衰减系数
+DEBT_SENSITIVITY = 0.5    # 历史债务的灵敏度
+DEBT_DECAY_RATE = 0.4     # 历史债务的衰减速率
 
-# 各维度权重
-W_PASS_RATE   = 40   # 通过率权重 (最高优先级)
-W_REVIEW_FREQ = 25   # 复习频次权重
-W_FORGETTING  = 20   # 遗忘风险权重
-W_DIFFICULTY  = 10   # 难度权重
-W_HOT_IRON    = 15   # 趁热打铁奖励
+DIFFICULTY_WEIGHT = {'Hard': 1.5, 'Medium': 1.2, 'Easy': 1.0}
 
-DIFFICULTY_SCORE = {'Hard': 1.0, 'Medium': 0.6, 'Easy': 0.3}
+# EMS -> 建议复习间隔 (天)
+INTERVAL_MAP = [
+    (1.5, 1),
+    (2.5, 3),
+    (3.5, 5),
+    (4.5, 10),
+    (5.1, 20),
+]
 
 # --- 项目路径 -------------------------------------------------------------
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -34,17 +44,27 @@ README_PATH = os.path.join(PROJECT_ROOT, 'README.md')
 NOTEBOOK_DIR = os.path.join(PROJECT_ROOT, 'notebook')
 
 
-# --- 解析 -----------------------------------------------------------------
+# --- 解析 README ----------------------------------------------------------
 
 def parse_readme(file_path):
-    """解析 README.md，返回 {题号: [记录列表]} 的字典。"""
+    """
+    解析 README.md，返回 {题号: [记录列表]}。
+    支持: 单表格式(v4, 日期列) / 分日表格式(v3.1) / S:N列表(v3.0)
+    """
     history = defaultdict(list)
     current_date = None
+    current_year = datetime.date.today().year
 
-    date_pattern = re.compile(r'^###\s+(\d{4}\.\d{2}\.\d{2})')
-    item_pattern = re.compile(
-        r'^\-\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(.*?)\s+\|'
+    # v4 单表格式: | 04.04 | **42. 接雨水** | `Hard` | 3 | [LeetCode](...) |
+    unified_pat = re.compile(
+        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
     )
+    # v3.1 分日表格行: | **42. 接雨水** | `Hard` | 3 | [LeetCode](...) |
+    table_pat = re.compile(
+        r'\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
+    )
+    # 分日表格日期头: ### 2026.04.04
+    date_pat = re.compile(r'^###\s+(\d{4}\.\d{2}\.\d{2})')
 
     if not os.path.exists(file_path):
         print("[WARN] README.md not found")
@@ -53,110 +73,144 @@ def parse_readme(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:
             line = line.strip()
-            dm = date_pattern.match(line)
+
+            # 检查分日格式的日期头
+            dm = date_pat.match(line)
             if dm:
                 current_date = datetime.datetime.strptime(
                     dm.group(1), '%Y.%m.%d'
                 ).date()
                 continue
 
-            im = item_pattern.match(line)
-            if im and current_date:
-                pid, name, difficulty, status = im.groups()
-                needs_review = 'review' in status.lower()
+            # v4 单表格式 (优先匹配，因为它也包含 table_pat 的模式)
+            um = unified_pat.search(line)
+            if um:
+                date_str, pid, name, diff, score = um.groups()
+                d = datetime.datetime.strptime(
+                    f"{current_year}.{date_str}", '%Y.%m.%d'
+                ).date()
                 history[int(pid)].append({
                     'id': int(pid),
                     'name': name.strip(),
-                    'difficulty': difficulty,
-                    'status': status.strip(),
-                    'needs_review': needs_review,
-                    'date': current_date,
+                    'difficulty': diff,
+                    'score': int(score),
+                    'date': d,
                 })
+                continue
+
+            # v3.1 分日表格行 (需要 current_date)
+            if current_date:
+                tm = table_pat.search(line)
+                if tm:
+                    pid, name, diff, score = tm.groups()
+                    history[int(pid)].append({
+                        'id': int(pid),
+                        'name': name.strip(),
+                        'difficulty': diff,
+                        'score': int(score),
+                        'date': current_date,
+                    })
 
     return history
 
 
-# --- 评分引擎 -------------------------------------------------------------
-
-def score_problem(records, today):
-    """为单道题计算综合紧迫度分数 (0~100)，附带主要推荐原因。"""
-    total = len(records)
-    review_count = sum(1 for r in records if r['needs_review'])
-    pass_count = total - review_count
-    pass_rate = pass_count / total if total else 1.0
-    last = records[-1]
-    days_ago = (today - last['date']).days
-    diff = last['difficulty']
-
-    reasons = []
-
-    # 1) 通过率维度
-    s_pass = (1 - pass_rate) * W_PASS_RATE
-    if pass_rate == 0:
-        reasons.append(f"[!] 从未独立通过 (0/{total})，急需攻克")
-    elif pass_rate < 0.5:
-        reasons.append(f"[!] 通过率仅 {pass_count}/{total}，掌握薄弱")
-
-    # 2) 复习频次维度
-    s_review = min(math.log2(review_count + 1) / 3, 1.0) * W_REVIEW_FREQ
-    if review_count >= 2:
-        reasons.append(f"[R] 反复标记 Review 达 {review_count} 次")
-
-    # 3) 遗忘风险维度
-    if days_ago >= FORGETTING_THRESHOLD_DAYS:
-        s_forget = min(math.log2(days_ago / FORGETTING_THRESHOLD_DAYS + 1), 1.0) * W_FORGETTING
-        reasons.append(f"[T] 已有 {days_ago} 天未练习，记忆衰减风险高")
-    else:
-        s_forget = 0
-
-    # 4) 难度维度
-    s_diff = DIFFICULTY_SCORE.get(diff, 0.5) * W_DIFFICULTY
-
-    # 5) 趁热打铁奖励
-    if days_ago <= HOT_IRON_WINDOW_DAYS and last['needs_review']:
-        s_hot = (1 - days_ago / (HOT_IRON_WINDOW_DAYS + 1)) * W_HOT_IRON
-        reasons.append(f"[H] {days_ago} 天前刚做过且未通过，趁热打铁")
-    else:
-        s_hot = 0
-
-    total_score = s_pass + s_review + s_forget + s_diff + s_hot
-
-    # 已掌握且未过遗忘阈值 -> 大幅降权
-    if pass_rate == 1.0 and review_count == 0 and days_ago < FORGETTING_THRESHOLD_DAYS:
-        total_score *= 0.1
-        reasons = ["[OK] 已完全掌握，暂无需复习"]
-
-    primary_reason = reasons[0] if reasons else "常规复习"
-
-    return total_score, primary_reason, {
-        'pass_rate': s_pass,
-        'review_freq': s_review,
-        'forgetting': s_forget,
-        'difficulty': s_diff,
-        'hot_iron': s_hot,
-    }
+def _migrate_old_status(status):
+    """将旧的 Pass/Review 状态映射为 1-5 分数。"""
+    s = status.lower()
+    if 'review' in s:
+        if '做不出来' in status or '完全' in status:
+            return 1
+        if 'pass' in s:
+            return 3
+        return 2
+    if 'pass' in s:
+        if '(r)' in s or '(R)' in s.lower():
+            return 3
+        # 有备注说明过程中有些曲折
+        if '(' in status:
+            return 4
+        return 5
+    return 3  # fallback
 
 
-def recommend(history, num=NUM_RECOMMEND):
-    """对所有题目评分并返回 Top-N 推荐列表。"""
+# --- EMS 计算 -------------------------------------------------------------
+
+def calculate_ems(scores):
+    """
+    计算 Effective Mastery Score。
+
+    1. EWMA: 近期分数权重更大
+    2. 历史债务: 如果最低分 < 3，产生持久惩罚，随后续练习次数衰减
+    3. EMS = clamp(EWMA - debt, 1.0, 5.0)
+    """
+    if not scores:
+        return 3.0
+
+    # EWMA
+    ewma = scores[0]
+    for s in scores[1:]:
+        ewma = EWMA_ALPHA * s + (1 - EWMA_ALPHA) * ewma
+
+    # 历史债务
+    worst = min(scores)
+    if worst >= 3:
+        return round(min(max(ewma, 1.0), 5.0), 2)
+
+    # 找最后一次出现最低分的位置，计算之后的恢复次数
+    worst_last_idx = max(i for i, s in enumerate(scores) if s == worst)
+    recovery = len(scores) - 1 - worst_last_idx
+
+    debt = max(0, 3 - worst) * DEBT_SENSITIVITY / (1 + recovery * DEBT_DECAY_RATE)
+    ems = ewma - debt
+
+    return round(min(max(ems, 1.0), 5.0), 2)
+
+
+def get_review_interval(ems):
+    """基于 EMS 计算建议复习间隔 (天)。"""
+    for threshold, days in INTERVAL_MAP:
+        if ems <= threshold:
+            return days
+    return 20
+
+
+# --- 紧迫度排序 -----------------------------------------------------------
+
+def compute_urgency(history):
+    """为每道题计算紧迫度，返回排序后的列表。"""
     today = datetime.date.today()
-    scored = []
+    results = []
 
     for pid, records in history.items():
         records.sort(key=lambda x: x['date'])
-        score, reason, breakdown = score_problem(records, today)
-        scored.append({
-            'score': score,
-            'reason': reason,
-            'breakdown': breakdown,
-            'record': records[-1],
+        scores = [r['score'] for r in records]
+        last = records[-1]
+
+        ems = calculate_ems(scores)
+        interval = get_review_interval(ems)
+        days_ago = (today - last['date']).days
+        overdue_ratio = days_ago / interval if interval > 0 else 0
+        diff_w = DIFFICULTY_WEIGHT.get(last['difficulty'], 1.0)
+
+        urgency = overdue_ratio * diff_w * (6 - ems)
+
+        results.append({
+            'id': pid,
+            'name': last['name'],
+            'difficulty': last['difficulty'],
             'total_times': len(records),
-            'review_count': sum(1 for r in records if r['needs_review']),
-            'pass_rate': sum(1 for r in records if not r['needs_review']) / len(records),
+            'scores': scores,
+            'ems': ems,
+            'interval': interval,
+            'days_ago': days_ago,
+            'overdue': overdue_ratio,
+            'urgency': round(urgency, 2),
+            'last_date': last['date'],
+            'last_score': last['score'],
         })
 
-    scored.sort(key=lambda x: x['score'], reverse=True)
-    return scored[:num], scored
+    results.sort(key=lambda x: x['urgency'], reverse=True)
+    return results
 
 
 # --- 终端打印 -------------------------------------------------------------
@@ -178,75 +232,76 @@ def truncate(s, max_width):
     return s
 
 
-def print_table(all_scored):
-    W = 105
+def print_table(results):
+    W = 115
     print("\n" + "-" * W)
-    print("  [Statistics] All Problems Overview")
+    print("  [统计] 所有题目概览")
     print("-" * W)
     header = (
-        f"  {pad('ID', 6)} | {pad('Name', 24)} | "
-        f"{pad('Count', 6)} | {pad('Pass Rate', 12)} | "
-        f"{pad('Last Date', 12)} | {pad('Last Status', 24)} | Score"
+        f"  {pad('ID', 6)} | {pad('题目名称', 22)} | "
+        f"{pad('难度', 8)} | {pad('次数', 6)} | "
+        f"{pad('分数序列', 14)} | {pad('掌握度', 8)} | "
+        f"{pad('复习间隔', 10)} | {pad('上次练习', 10)} | 紧迫度"
     )
     print(header)
     print("-" * W)
 
-    for item in sorted(all_scored, key=lambda x: x['record']['id']):
-        r = item['record']
-        name = truncate(r['name'], 22)
-        pr = f"{int(item['pass_rate']*100)}%"
-        pr_detail = f"{item['total_times'] - item['review_count']}/{item['total_times']} ({pr})"
-        status = truncate(r['status'], 22)
-        score_str = f"{item['score']:.1f}"
+    for item in sorted(results, key=lambda x: x['id']):
+        name = truncate(item['name'], 20)
+        scores_str = ','.join(str(s) for s in item['scores'])
+        if len(scores_str) > 12:
+            scores_str = scores_str[:10] + ".."
+        interval_str = f"{item['interval']}天"
+        days_str = f"{item['days_ago']}天前"
 
         print(
-            f"  {pad(r['id'], 6)} | {pad(name, 24)} | "
-            f"{pad(item['total_times'], 6)} | {pad(pr_detail, 12)} | "
-            f"{pad(r['date'].strftime('%Y-%m-%d'), 12)} | {pad(status, 24)} | {score_str}"
+            f"  {pad(item['id'], 6)} | {pad(name, 22)} | "
+            f"{pad(item['difficulty'], 8)} | {pad(item['total_times'], 6)} | "
+            f"{pad(scores_str, 14)} | {pad(item['ems'], 8)} | "
+            f"{pad(interval_str, 10)} | {pad(days_str, 10)} | {item['urgency']}"
         )
 
     print("-" * W)
 
 
-def print_recommendations(recs):
-    W = 105
+def print_recommendations(results, num):
+    W = 115
+    recs = results[:num]
+
     print()
     print("-" * W)
-    print("  [Recommend] Today's Review Plan (Multi-Factor Weighted Scoring)")
+    print("  [推荐] 今日复习计划")
     print("-" * W)
 
     if not recs:
-        print("  No review recommendations. Keep exploring new problems!")
+        print("  当前没有建议复习的题目，去刷点新题吧！")
         print("-" * W)
-        return
+        return recs
 
-    for idx, rec in enumerate(recs, 1):
-        r = rec['record']
-        bd = rec['breakdown']
+    for idx, r in enumerate(recs, 1):
+        scores_str = ' -> '.join(str(s) for s in r['scores'])
+        overdue_label = "已过期" if r['overdue'] > 1.0 else "进行中"
         print(f"  [{idx}] {r['id']}. {r['name']}  ({r['difficulty']})")
-        print(f"      Reason : {rec['reason']}")
-        print(f"      Score  : {rec['score']:.1f}  "
-              f"( pass={bd['pass_rate']:.1f}  review={bd['review_freq']:.1f}"
-              f"  forget={bd['forgetting']:.1f}  diff={bd['difficulty']:.1f}"
-              f"  hot={bd['hot_iron']:.1f} )")
+        print(f"      掌握度: {r['ems']} | 复习间隔: {r['interval']}天 | "
+              f"上次练习: {r['days_ago']}天前 | 状态: {overdue_label}")
+        print(f"      历史轨迹: [{scores_str}] | 紧迫度: {r['urgency']}")
         if idx < len(recs):
             print()
 
     print("-" * W)
-    print(f"  Config: pass_rate={W_PASS_RATE} | review_freq={W_REVIEW_FREQ}"
-          f" | forgetting={W_FORGETTING} | difficulty={W_DIFFICULTY}"
-          f" | hot_iron={W_HOT_IRON}")
-    print(f"  Thresholds: forgetting >= {FORGETTING_THRESHOLD_DAYS}d"
-          f" | hot_iron <= {HOT_IRON_WINDOW_DAYS}d")
+    print(f"  评分说明: 5=秒杀 4=顺畅 3=通过 2=艰难 1=未通过")
+    print(f"  公式: 掌握度 = EWMA + 历史债务 | 紧迫度 = 过期比例 * 难度权重 * (6 - 掌握度)")
     print("-" * W)
+
+    return recs
 
 
 # --- Notebook 自动生成 ----------------------------------------------------
 
 def generate_notebook(recs, target_date):
     """
-    根据推荐结果，自动生成明天的 ipynb 文件。
-    文件路径: notebook/<year>/code_<MMDD>.ipynb
+    根据推荐结果，自动生成当天的 ipynb 文件。
+    路径: notebook/<year>/code_<MMDD>.ipynb
     """
     year_str = target_date.strftime('%Y')
     mmdd_str = target_date.strftime('%m%d')
@@ -254,7 +309,8 @@ def generate_notebook(recs, target_date):
     file_path = os.path.join(dir_path, f'code_{mmdd_str}.ipynb')
 
     if os.path.exists(file_path):
-        print(f"\n  [INFO] Notebook already exists: {os.path.relpath(file_path, PROJECT_ROOT)}")
+        print(f"\n  [提示] Notebook 已存在: "
+              f"{os.path.relpath(file_path, PROJECT_ROOT)}")
         return file_path
 
     os.makedirs(dir_path, exist_ok=True)
@@ -262,7 +318,7 @@ def generate_notebook(recs, target_date):
     date_display = target_date.strftime('%Y-%m-%d')
     cells = []
 
-    # Cell 0: Header
+    # Header cell
     cells.append({
         "cell_type": "code",
         "execution_count": None,
@@ -275,19 +331,16 @@ def generate_notebook(recs, target_date):
         ]
     })
 
-    # Cell 1: Review section marker
+    # Review section
     cells.append({
         "cell_type": "markdown",
         "id": str(uuid.uuid4()),
         "metadata": {},
-        "source": [
-            "# Review"
-        ]
+        "source": ["# Review"]
     })
 
-    # Generate one code cell per recommended problem
-    for rec in recs:
-        r = rec['record']
+    for r in recs:
+        diff_letter = r['difficulty'][0]
         cells.append({
             "cell_type": "code",
             "execution_count": None,
@@ -296,19 +349,17 @@ def generate_notebook(recs, target_date):
             "outputs": [],
             "source": [
                 f"# {r['id']}. {r['name']}\n",
-                f"# {r['difficulty'][0]}\n",
+                f"# {diff_letter}\n",
                 "# \n",
             ]
         })
 
-    # Cell: New problems section marker
+    # New section
     cells.append({
         "cell_type": "markdown",
         "id": str(uuid.uuid4()),
         "metadata": {},
-        "source": [
-            "# New"
-        ]
+        "source": ["# New"]
     })
 
     notebook = {
@@ -337,19 +388,24 @@ def generate_notebook(recs, target_date):
         json.dump(notebook, f, ensure_ascii=False, indent=1)
 
     rel = os.path.relpath(file_path, PROJECT_ROOT)
-    print(f"\n  [CREATED] {rel}")
-    print(f"  Today's notebook generated with {len(recs)} review problems.")
+    print(f"\n  [已创建] {rel}")
+    print(f"  已生成包含 {len(recs)} 道复习题的 Notebook。")
     return file_path
-
 
 # --- 入口 -----------------------------------------------------------------
 
 if __name__ == "__main__":
-    history = parse_readme(README_PATH)
-    recs, all_scored = recommend(history, NUM_RECOMMEND)
+    import argparse
+    parser = argparse.ArgumentParser(description="LeetCode 智能复习推荐系统 v3.0")
+    parser.add_argument('-n', type=int, default=NUM_RECOMMEND,
+                        help=f"推荐题目数量 (默认: {NUM_RECOMMEND})")
+    args = parser.parse_args()
 
-    print_table(all_scored)
-    print_recommendations(recs)
+    history = parse_readme(README_PATH)
+    results = compute_urgency(history)
+
+    print_table(results)
+    recs = print_recommendations(results, args.n)
 
     # 自动生成当天的 notebook (如果不存在)
     today = datetime.date.today()

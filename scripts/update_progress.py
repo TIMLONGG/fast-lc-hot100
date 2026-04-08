@@ -153,6 +153,29 @@ if __name__ == "__main__":
     if not problems:
         print("[WARN] No problems found in README.md")
         exit(1)
-    with open(PROGRESS_PATH, 'w', encoding='utf-8') as f:
-        f.write(generate_progress_md(problems))
-    print(f"  [DONE] PROGRESS.md updated ({len(problems)} problems)")
+
+    # 1. 生成内容
+    content = generate_progress_md(problems)
+
+    # 2. 自动归档：保存到 progress/MMDD.md
+    # 找到所有练习记录中的最后一天日期
+    all_dates = []
+    for p in problems.values():
+        all_dates.extend([r['date'] for r in p['records']])
+    
+    if all_dates:
+        last_practice_date = max(all_dates)
+        mmdd = last_practice_date.strftime('%m%d')
+        
+        archive_dir = os.path.join(PROJECT_ROOT, 'progress')
+        if not os.path.exists(archive_dir):
+            os.makedirs(archive_dir)
+            
+        archive_path = os.path.join(archive_dir, f"{mmdd}.md")
+        with open(archive_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+        
+        rel_archive = os.path.relpath(archive_path, PROJECT_ROOT)
+        print(f"  [DONE] Progress report generated: {rel_archive}")
+    else:
+        print(f"  [WARN] No practice records found, no report generated.")

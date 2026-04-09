@@ -25,3 +25,6 @@
 | 04.07 | **15. 三数之和** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/3sum/) |
 | 04.07 | **3. 无重复字符的最长子串** | `Medium` | 4 | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
 | 04.07 | **189. 轮转数组** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.08 | **76. 最小覆盖子串** | `Hard` | 2 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.08 | **239. 滑动窗口最大值** | `Hard` | 3 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.08 | **41. 缺失的第一个正数** | `Hard` | 1 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |

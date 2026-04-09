@@ -22,6 +22,6 @@
 | 04.05 | **76. 最小覆盖子串** | `Hard` | 1 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
 | 04.05 | **53. 最大子数组和** | `Medium` | 4 | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
 | 04.05 | **56. 合并区间** | `Medium` | 4 | [LeetCode](https://leetcode.cn/problems/merge-intervals/) |
-| 04.06 | **15. 三数之和** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.06 | **3. 无重复字符的最长子串** | `Medium` | 4 | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
-| 04.06 | **189. 轮转数组** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.07 | **15. 三数之和** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.07 | **3. 无重复字符的最长子串** | `Medium` | 4 | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
+| 04.07 | **189. 轮转数组** | `Medium` | 2 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |

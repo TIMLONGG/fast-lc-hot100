@@ -55,9 +55,10 @@ def parse_readme(file_path):
     current_date = None
     current_year = datetime.date.today().year
 
-    # v4 单表格式: | 04.04 | **42. 接雨水** | `Hard` | 3 | [LeetCode](...) |
+    # v4 单表格式: | 04.04 | **42. 接雨水** | `Hard` | 3 | [时间?] | [LeetCode](...) |
+    # 兼容 5 列和 6 列，第6列可能是时间，也可能是链接
     unified_pat = re.compile(
-        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
+        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|\s*(.*?)\s*\|'
     )
     # v3.1 分日表格行: | **42. 接雨水** | `Hard` | 3 | [LeetCode](...) |
     table_pat = re.compile(
@@ -85,15 +86,17 @@ def parse_readme(file_path):
             # v4 单表格式 (优先匹配，因为它也包含 table_pat 的模式)
             um = unified_pat.search(line)
             if um:
-                date_str, pid, name, diff, score = um.groups()
+                date_str, pid, name, diff, score, col6 = um.groups()
                 d = datetime.datetime.strptime(
                     f"{current_year}.{date_str}", '%Y.%m.%d'
                 ).date()
+                time_val = col6 if col6 and 'LeetCode' not in col6 else ""
                 history[int(pid)].append({
                     'id': int(pid),
                     'name': name.strip(),
                     'difficulty': diff,
                     'score': int(score),
+                    'time': time_val,
                     'date': d,
                 })
                 continue

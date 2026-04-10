@@ -58,7 +58,7 @@ def parse_readme(file_path):
     current_year = datetime.date.today().year
 
     unified_pat = re.compile(
-        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
+        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|\s*(.*?)\s*\|'
     )
     table_pat = re.compile(
         r'\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
@@ -78,12 +78,22 @@ def parse_readme(file_path):
                 continue
             um = unified_pat.search(line)
             if um:
-                date_str, pid_s, name, diff, score = um.groups()
+                date_str, pid_s, name, diff, score, time_str = um.groups()
                 pid = int(pid_s)
                 d = datetime.datetime.strptime(f"{current_year}.{date_str}", '%Y.%m.%d').date()
                 problems[pid]['name'] = name.strip()
                 problems[pid]['difficulty'] = diff
-                problems[pid]['records'].append({'date': d, 'score': int(score)})
+                time_in_seconds = None
+                if time_str and 'LeetCode' not in time_str:
+                    m_min = re.search(r'(\d+)分', time_str)
+                    m_sec = re.search(r'(\d+)秒', time_str)
+                    if m_min or m_sec:
+                        mins = int(m_min.group(1)) if m_min else 0
+                        secs = int(m_sec.group(1)) if m_sec else 0
+                        time_in_seconds = mins * 60 + secs
+
+                # 兼容新增的时间列，不影响现有复习逻辑
+                problems[pid]['records'].append({'date': d, 'score': int(score), 'time': time_in_seconds})
                 lm = link_pat.search(line)
                 if lm: problems[pid]['link'] = lm.group(1)
                 continue
@@ -94,7 +104,7 @@ def parse_readme(file_path):
                     pid = int(pid_s)
                     problems[pid]['name'] = name.strip()
                     problems[pid]['difficulty'] = diff
-                    problems[pid]['records'].append({'date': current_date, 'score': int(score)})
+                    problems[pid]['records'].append({'date': current_date, 'score': int(score), 'time': None})
                     lm = link_pat.search(line)
                     if lm: problems[pid]['link'] = lm.group(1)
     return problems
@@ -116,18 +126,30 @@ def generate_progress_md(problems):
     all_scores = [r['score'] for p in problems.values() for r in p['records']]
     overall_avg = sum(all_scores) / len(all_scores) if all_scores else 0
 
+    all_times = [r['time'] for p in problems.values() for r in p['records'] if r.get('time') is not None]
+    overall_avg_s = sum(all_times) / len(all_times) if all_times else 0
+    overall_time_str = f"{int(overall_avg_s // 60)}分{int(overall_avg_s % 60)}秒" if all_times else "-"
+
     lines.append(f"**总题数**: {total_problems}　|　"
                  f"**总练习次数**: {total_attempts}　|　"
+                 f"**平均解题耗时**: {overall_time_str}　|　"
                  f"**整体平均分**: {overall_avg:.1f} {progress_bar(overall_avg)}\n\n")
 
-    lines.append("| # | 题目 | 难度 | 次数 | 平均分 | 掌握度 | 上次日期 | 历史轨迹 |")
-    lines.append("|--:|------|------|:----:|:------:|--------|----------|----------|")
+    lines.append("| # | 题目 | 难度 | 次数 | 平均分 | 掌握度 | 平均耗时 | 上次日期 | 历史轨迹 |")
+    lines.append("|--:|------|------|:----:|:------:|--------|----------|----------|----------|")
 
     for pid in sorted(problems.keys()):
         p = problems[pid]
         records = sorted(p['records'], key=lambda x: x['date'])
         scores = [r['score'] for r in records]
         avg = sum(scores) / len(scores)
+        
+        times = [r['time'] for r in records if r.get('time') is not None]
+        avg_time_str = "-"
+        if times:
+            avg_s = sum(times) / len(times)
+            avg_time_str = f"{int(avg_s // 60)}分{int(avg_s % 60)}秒"
+            
         last_date = records[-1]['date'].strftime('%Y-%m-%d')
         
         # 历史轨迹截断
@@ -141,7 +163,7 @@ def generate_progress_md(problems):
         name = f"[{p['name']}]({p['link']})" if p['link'] else p['name']
         lines.append(
             f"| {pid} | {name} | `{p['difficulty']}` | "
-            f"{len(records)} | {avg:.1f} | {bar} | {last_date} | {scores_str} |"
+            f"{len(records)} | {avg:.1f} | {bar} | {avg_time_str} | {last_date} | {scores_str} |"
         )
 
     lines.append(f"\n*Last updated: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}*\n")

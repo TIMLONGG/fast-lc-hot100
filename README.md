@@ -32,3 +32,7 @@
 | 04.09 | **189. 轮转数组** | `Medium` | 4 | 6分0秒 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
 | 04.09 | **42. 接雨水** | `Hard` | 2 | 12分37秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
 | 04.09 | **76. 最小覆盖子串** | `Hard` | 3 | 23分0秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.10 | **41. 缺失的第一个正数** | `Hard` | 3 | 16分56秒 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.10 | **560. 和为 K 的子数组** | `Medium` | 4 | 7分8秒 | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
+| 04.10 | **239. 滑动窗口最大值** | `Hard` | 4 | 6分25秒 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.10 | **73. 矩阵置零** | `Medium` | 5 | 6分11秒 | [LeetCode](https://leetcode.cn/problems/set-matrix-zeroes/) |

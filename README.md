@@ -36,3 +36,7 @@
 | 04.10 | **560. 和为 K 的子数组** | `Medium` | 4 | 7分8秒 | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
 | 04.10 | **239. 滑动窗口最大值** | `Hard` | 4 | 6分25秒 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
 | 04.10 | **73. 矩阵置零** | `Medium` | 5 | 6分11秒 | [LeetCode](https://leetcode.cn/problems/set-matrix-zeroes/) |
+| 04.11 | **41. 缺失的第一个正数** | `Hard` | 5 | 7分38秒 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.11 | **128. 最长连续序列** | `Medium` | 5 | 6分41秒 | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
+| 04.11 | **160. 相交链表** | `Easy` | 4 | 8分3秒 | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
+| 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |

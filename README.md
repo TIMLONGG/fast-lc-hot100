@@ -43,3 +43,14 @@
 | 04.12 | **76. 最小覆盖子串** | `Hard` | 4 | 8分51秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
 | 04.12 | **42. 接雨水** | `Hard` | 5 | 2分41秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
 | 04.12 | **94. 二叉树的中序遍历** | `Easy` | 5 | 2分11秒 | [LeetCode](https://leetcode.cn/problems/binary-tree-inorder-traversal/) |
+| 04.13 | **76. 最小覆盖子串** | `Hard` | 5 | 3分30秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.13 | **42. 接雨水** | `Hard` | 5 | 2分15秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.13 | **3. 无重复字符的最长子串** | `Medium` | 5 | 3分51秒 | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
+| 04.13 | **104. 二叉树的最大深度** | `Easy` | 5 | 2分18秒 | [LeetCode](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) |
+| 04.13 | **226. 翻转二叉树** | `Easy` | 5 | 5分26秒 | [LeetCode](https://leetcode.cn/problems/invert-binary-tree/) |
+| 04.13 | **101. 对称二叉树** | `Easy` | 4 | 11分33秒 | [LeetCode](https://leetcode.cn/problems/symmetric-tree/) |
+| 04.13 | **543. 二叉树的直径** | `Easy` | 3 | 17分59秒 | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |
+| 04.13 | **102. 二叉树的层序遍历** | `Medium` | 4 | 11分34秒 | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |
+| 04.13 | **108. 将有序数组转换为二叉搜索树** | `Easy` | 3 | 21分48秒 | [LeetCode](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/) |
+| 04.13 | **98. 验证二叉搜索树** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.13 | **70. 爬楼梯** | `Easy` | 4 | 6分51秒 | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |

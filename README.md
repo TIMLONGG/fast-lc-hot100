@@ -40,3 +40,6 @@
 | 04.11 | **128. 最长连续序列** | `Medium` | 5 | 6分41秒 | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
 | 04.11 | **160. 相交链表** | `Easy` | 4 | 8分3秒 | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
 | 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
+| 04.12 | **76. 最小覆盖子串** | `Hard` | 4 | 8分51秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.12 | **42. 接雨水** | `Hard` | 5 | 2分41秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.12 | **94. 二叉树的中序遍历** | `Easy` | 5 | 2分11秒 | [LeetCode](https://leetcode.cn/problems/binary-tree-inorder-traversal/) |

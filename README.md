@@ -54,3 +54,18 @@
 | 04.13 | **108. 将有序数组转换为二叉搜索树** | `Easy` | 3 | 21分48秒 | [LeetCode](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/) |
 | 04.13 | **98. 验证二叉搜索树** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
 | 04.13 | **70. 爬楼梯** | `Easy` | 4 | 6分51秒 | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |
+| 04.14 | **98. 验证二叉搜索树** | `Medium` | 3 | 7分59秒 | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.14 | **189. 轮转数组** | `Medium` | 1 | 1分55秒 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.14 | **438. 找到字符串中所有字母异位词** | `Medium` | 5 | 6分23秒 | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
+| 04.14 | **15. 三数之和** | `Medium` | 5 | 4分53秒 | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.14 | **53. 最大子数组和** | `Medium` | 4 | 6分36秒 | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
+| 04.14 | **118. 杨辉三角** | `Easy` | 5 | 3分1秒 | [LeetCode](https://leetcode.cn/problems/pascals-triangle/) |
+| 04.14 | **198. 打家劫舍** | `Medium` | 2 | 6分14秒 | [LeetCode](https://leetcode.cn/problems/house-robber/) |
+| 04.14 | **136. 只出现一次的数字** | `Easy` | 5 | 1分0秒 | [LeetCode](https://leetcode.cn/problems/single-number/) |
+| 04.14 | **54. 螺旋矩阵** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.14 | **48. 旋转图像** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
+| 04.14 | **240. 搜索二维矩阵 II** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
+| 04.14 | **876. 链表的中间结点** | `Easy` | 4 | | [LeetCode](https://leetcode.cn/problems/middle-of-the-linked-list/) |
+| 04.14 | **141. 环形链表** | `Easy` | 5 | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle/) |
+| 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |

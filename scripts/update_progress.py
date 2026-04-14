@@ -57,14 +57,17 @@ def parse_readme(file_path):
     current_date = None
     current_year = datetime.date.today().year
 
+    # v5 格式: | 04.14 | **98. 验证二叉搜索树** | `Medium` | 3 | 7分59秒 | 中序遍历解法薄弱 | [LeetCode](...) |
+    # 兼容 5/6/7 列: 分数后面可能跟 时间、备注、链接 的任意组合
     unified_pat = re.compile(
-        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|\s*(.*?)\s*\|'
+        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
     )
     table_pat = re.compile(
         r'\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
     )
     date_pat = re.compile(r'^###\s+(\d{4}\.\d{2}\.\d{2})')
     link_pat = re.compile(r'\[LeetCode\]\((.*?)\)')
+    time_pat = re.compile(r'(\d+)分(\d+)秒')
 
     if not os.path.exists(file_path):
         return problems
@@ -78,21 +81,20 @@ def parse_readme(file_path):
                 continue
             um = unified_pat.search(line)
             if um:
-                date_str, pid_s, name, diff, score, time_str = um.groups()
+                date_str, pid_s, name, diff, score = um.groups()
                 pid = int(pid_s)
                 d = datetime.datetime.strptime(f"{current_year}.{date_str}", '%Y.%m.%d').date()
                 problems[pid]['name'] = name.strip()
                 problems[pid]['difficulty'] = diff
+                
+                # 提取时间
                 time_in_seconds = None
-                if time_str and 'LeetCode' not in time_str:
-                    m_min = re.search(r'(\d+)分', time_str)
-                    m_sec = re.search(r'(\d+)秒', time_str)
-                    if m_min or m_sec:
-                        mins = int(m_min.group(1)) if m_min else 0
-                        secs = int(m_sec.group(1)) if m_sec else 0
-                        time_in_seconds = mins * 60 + secs
+                rest = line[um.end():]
+                tm_m = time_pat.search(rest)
+                if tm_m:
+                    mins, secs = int(tm_m.group(1)), int(tm_m.group(2))
+                    time_in_seconds = mins * 60 + secs
 
-                # 兼容新增的时间列，不影响现有复习逻辑
                 problems[pid]['records'].append({'date': d, 'score': int(score), 'time': time_in_seconds})
                 lm = link_pat.search(line)
                 if lm: problems[pid]['link'] = lm.group(1)

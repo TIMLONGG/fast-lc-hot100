@@ -3,69 +3,69 @@
 
 ## timeline
 
-| 日期 | 题目 | 难度 | 分数 | 时间 | 链接 |
-|------|------|------|:----:|:----:|------|
-| 04.04 | **1. 两数之和** | `Easy` | 5 | | [LeetCode](https://leetcode.cn/problems/two-sum/) |
-| 04.04 | **49. 字母异位词分组** | `Easy` | 4 | | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
-| 04.04 | **128. 最长连续序列** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
-| 04.04 | **283. 移动零** | `Easy` | 5 | | [LeetCode](https://leetcode.cn/problems/move-zeroes/) |
-| 04.04 | **11. 盛最多水的容器** | `Medium` | 5 | | [LeetCode](https://leetcode.cn/problems/container-with-most-water/) |
-| 04.04 | **15. 三数之和** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.04 | **42. 接雨水** | `Hard` | 3 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
-| 04.04 | **3. 无重复字符的最长子串** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
-| 04.04 | **438. 找到字符串中所有字母异位词** | `Medium` | 4 | | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
-| 04.04 | **560. 和为 K 的子数组** | `Medium` | 3 | | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
-| 04.04 | **239. 滑动窗口最大值** | `Hard` | 1 | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
-| 04.05 | **42. 接雨水** | `Hard` | 2 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
-| 04.05 | **239. 滑动窗口最大值** | `Hard` | 3 | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
-| 04.05 | **128. 最长连续序列** | `Medium` | 4 | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
-| 04.05 | **76. 最小覆盖子串** | `Hard` | 1 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
-| 04.05 | **53. 最大子数组和** | `Medium` | 4 | | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
-| 04.05 | **56. 合并区间** | `Medium` | 4 | | [LeetCode](https://leetcode.cn/problems/merge-intervals/) |
-| 04.07 | **15. 三数之和** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.07 | **3. 无重复字符的最长子串** | `Medium` | 4 | | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
-| 04.07 | **189. 轮转数组** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
-| 04.08 | **76. 最小覆盖子串** | `Hard` | 2 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
-| 04.08 | **239. 滑动窗口最大值** | `Hard` | 3 | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
-| 04.08 | **41. 缺失的第一个正数** | `Hard` | 1 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
-| 04.09 | **15. 三数之和** | `Medium` | 4 | 6分56秒 | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.09 | **189. 轮转数组** | `Medium` | 4 | 6分0秒 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
-| 04.09 | **42. 接雨水** | `Hard` | 2 | 12分37秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
-| 04.09 | **76. 最小覆盖子串** | `Hard` | 3 | 23分0秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
-| 04.10 | **41. 缺失的第一个正数** | `Hard` | 3 | 16分56秒 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
-| 04.10 | **560. 和为 K 的子数组** | `Medium` | 4 | 7分8秒 | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
-| 04.10 | **239. 滑动窗口最大值** | `Hard` | 4 | 6分25秒 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
-| 04.10 | **73. 矩阵置零** | `Medium` | 5 | 6分11秒 | [LeetCode](https://leetcode.cn/problems/set-matrix-zeroes/) |
-| 04.11 | **41. 缺失的第一个正数** | `Hard` | 5 | 7分38秒 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
-| 04.11 | **128. 最长连续序列** | `Medium` | 5 | 6分41秒 | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
-| 04.11 | **160. 相交链表** | `Easy` | 4 | 8分3秒 | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
-| 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
-| 04.12 | **76. 最小覆盖子串** | `Hard` | 4 | 8分51秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
-| 04.12 | **42. 接雨水** | `Hard` | 5 | 2分41秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
-| 04.12 | **94. 二叉树的中序遍历** | `Easy` | 5 | 2分11秒 | [LeetCode](https://leetcode.cn/problems/binary-tree-inorder-traversal/) |
-| 04.13 | **76. 最小覆盖子串** | `Hard` | 5 | 3分30秒 | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
-| 04.13 | **42. 接雨水** | `Hard` | 5 | 2分15秒 | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
-| 04.13 | **3. 无重复字符的最长子串** | `Medium` | 5 | 3分51秒 | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
-| 04.13 | **104. 二叉树的最大深度** | `Easy` | 5 | 2分18秒 | [LeetCode](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) |
-| 04.13 | **226. 翻转二叉树** | `Easy` | 5 | 5分26秒 | [LeetCode](https://leetcode.cn/problems/invert-binary-tree/) |
-| 04.13 | **101. 对称二叉树** | `Easy` | 4 | 11分33秒 | [LeetCode](https://leetcode.cn/problems/symmetric-tree/) |
-| 04.13 | **543. 二叉树的直径** | `Easy` | 3 | 17分59秒 | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |
-| 04.13 | **102. 二叉树的层序遍历** | `Medium` | 4 | 11分34秒 | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |
-| 04.13 | **108. 将有序数组转换为二叉搜索树** | `Easy` | 3 | 21分48秒 | [LeetCode](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/) |
-| 04.13 | **98. 验证二叉搜索树** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
-| 04.13 | **70. 爬楼梯** | `Easy` | 4 | 6分51秒 | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |
-| 04.14 | **98. 验证二叉搜索树** | `Medium` | 3 | 7分59秒 | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
-| 04.14 | **189. 轮转数组** | `Medium` | 1 | 1分55秒 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
-| 04.14 | **438. 找到字符串中所有字母异位词** | `Medium` | 5 | 6分23秒 | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
-| 04.14 | **15. 三数之和** | `Medium` | 5 | 4分53秒 | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.14 | **53. 最大子数组和** | `Medium` | 4 | 6分36秒 | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
-| 04.14 | **118. 杨辉三角** | `Easy` | 5 | 3分1秒 | [LeetCode](https://leetcode.cn/problems/pascals-triangle/) |
-| 04.14 | **198. 打家劫舍** | `Medium` | 2 | 6分14秒 | [LeetCode](https://leetcode.cn/problems/house-robber/) |
-| 04.14 | **136. 只出现一次的数字** | `Easy` | 5 | 1分0秒 | [LeetCode](https://leetcode.cn/problems/single-number/) |
-| 04.14 | **54. 螺旋矩阵** | `Medium` | 2 | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
-| 04.14 | **48. 旋转图像** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
-| 04.14 | **240. 搜索二维矩阵 II** | `Medium` | 1 | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
-| 04.14 | **876. 链表的中间结点** | `Easy` | 4 | | [LeetCode](https://leetcode.cn/problems/middle-of-the-linked-list/) |
-| 04.14 | **141. 环形链表** | `Easy` | 5 | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle/) |
-| 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
-| 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |
+| 日期 | 题目 | 难度 | 分数 | 时间 | 备注 | 链接 |
+|------|------|------|:----:|:----:|------|------|
+| 04.04 | **1. 两数之和** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/two-sum/) |
+| 04.04 | **49. 字母异位词分组** | `Easy` | 4 | | | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
+| 04.04 | **128. 最长连续序列** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
+| 04.04 | **283. 移动零** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/move-zeroes/) |
+| 04.04 | **11. 盛最多水的容器** | `Medium` | 5 | | | [LeetCode](https://leetcode.cn/problems/container-with-most-water/) |
+| 04.04 | **15. 三数之和** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.04 | **42. 接雨水** | `Hard` | 3 | | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.04 | **3. 无重复字符的最长子串** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
+| 04.04 | **438. 找到字符串中所有字母异位词** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
+| 04.04 | **560. 和为 K 的子数组** | `Medium` | 3 | | | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
+| 04.04 | **239. 滑动窗口最大值** | `Hard` | 1 | | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.05 | **42. 接雨水** | `Hard` | 2 | | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.05 | **239. 滑动窗口最大值** | `Hard` | 3 | | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.05 | **128. 最长连续序列** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
+| 04.05 | **76. 最小覆盖子串** | `Hard` | 1 | | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.05 | **53. 最大子数组和** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
+| 04.05 | **56. 合并区间** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/merge-intervals/) |
+| 04.07 | **15. 三数之和** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.07 | **3. 无重复字符的最长子串** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
+| 04.07 | **189. 轮转数组** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.08 | **76. 最小覆盖子串** | `Hard` | 2 | | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.08 | **239. 滑动窗口最大值** | `Hard` | 3 | | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.08 | **41. 缺失的第一个正数** | `Hard` | 1 | | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.09 | **15. 三数之和** | `Medium` | 4 | 6分56秒 | | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.09 | **189. 轮转数组** | `Medium` | 4 | 6分0秒 | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.09 | **42. 接雨水** | `Hard` | 2 | 12分37秒 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.09 | **76. 最小覆盖子串** | `Hard` | 3 | 23分0秒 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.10 | **41. 缺失的第一个正数** | `Hard` | 3 | 16分56秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.10 | **560. 和为 K 的子数组** | `Medium` | 4 | 7分8秒 | | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
+| 04.10 | **239. 滑动窗口最大值** | `Hard` | 4 | 6分25秒 | | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.10 | **73. 矩阵置零** | `Medium` | 5 | 6分11秒 | | [LeetCode](https://leetcode.cn/problems/set-matrix-zeroes/) |
+| 04.11 | **41. 缺失的第一个正数** | `Hard` | 5 | 7分38秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.11 | **128. 最长连续序列** | `Medium` | 5 | 6分41秒 | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
+| 04.11 | **160. 相交链表** | `Easy` | 4 | 8分3秒 | | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
+| 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | 递归解法不熟练 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
+| 04.12 | **76. 最小覆盖子串** | `Hard` | 4 | 8分51秒 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.12 | **42. 接雨水** | `Hard` | 5 | 2分41秒 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.12 | **94. 二叉树的中序遍历** | `Easy` | 5 | 2分11秒 | | [LeetCode](https://leetcode.cn/problems/binary-tree-inorder-traversal/) |
+| 04.13 | **76. 最小覆盖子串** | `Hard` | 5 | 3分30秒 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
+| 04.13 | **42. 接雨水** | `Hard` | 5 | 2分15秒 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
+| 04.13 | **3. 无重复字符的最长子串** | `Medium` | 5 | 3分51秒 | | [LeetCode](https://leetcode.cn/problems/longest-substring-without-repeating-characters/) |
+| 04.13 | **104. 二叉树的最大深度** | `Easy` | 5 | 2分18秒 | | [LeetCode](https://leetcode.cn/problems/maximum-depth-of-binary-tree/) |
+| 04.13 | **226. 翻转二叉树** | `Easy` | 5 | 5分26秒 | | [LeetCode](https://leetcode.cn/problems/invert-binary-tree/) |
+| 04.13 | **101. 对称二叉树** | `Easy` | 4 | 11分33秒 | | [LeetCode](https://leetcode.cn/problems/symmetric-tree/) |
+| 04.13 | **543. 二叉树的直径** | `Easy` | 3 | 17分59秒 | | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |
+| 04.13 | **102. 二叉树的层序遍历** | `Medium` | 4 | 11分34秒 | | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |
+| 04.13 | **108. 将有序数组转换为二叉搜索树** | `Easy` | 3 | 21分48秒 | | [LeetCode](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/) |
+| 04.13 | **98. 验证二叉搜索树** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.13 | **70. 爬楼梯** | `Easy` | 4 | 6分51秒 | | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |
+| 04.14 | **98. 验证二叉搜索树** | `Medium` | 3 | 7分59秒 | 中序遍历解法薄弱 | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.14 | **189. 轮转数组** | `Medium` | 1 | 1分55秒 | 翻转数组解法忘记取模 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.14 | **438. 找到字符串中所有字母异位词** | `Medium` | 5 | 6分23秒 | | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
+| 04.14 | **15. 三数之和** | `Medium` | 5 | 4分53秒 | | [LeetCode](https://leetcode.cn/problems/3sum/) |
+| 04.14 | **53. 最大子数组和** | `Medium` | 4 | 6分36秒 | | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
+| 04.14 | **118. 杨辉三角** | `Easy` | 5 | 3分1秒 | | [LeetCode](https://leetcode.cn/problems/pascals-triangle/) |
+| 04.14 | **198. 打家劫舍** | `Medium` | 2 | 6分14秒 | O(1)空间解法薄弱 | [LeetCode](https://leetcode.cn/problems/house-robber/) |
+| 04.14 | **136. 只出现一次的数字** | `Easy` | 5 | 1分0秒 | | [LeetCode](https://leetcode.cn/problems/single-number/) |
+| 04.14 | **54. 螺旋矩阵** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.14 | **48. 旋转图像** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
+| 04.14 | **240. 搜索二维矩阵 II** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
+| 04.14 | **876. 链表的中间结点** | `Easy` | 4 | | | [LeetCode](https://leetcode.cn/problems/middle-of-the-linked-list/) |
+| 04.14 | **141. 环形链表** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle/) |
+| 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |

@@ -57,10 +57,10 @@ def parse_readme(file_path):
     current_date = None
     current_year = datetime.date.today().year
 
-    # v4 单表格式: | 04.04 | **42. 接雨水** | `Hard` | 3 | [时间?] | [LeetCode](...) |
-    # 兼容 5 列和 6 列，第6列可能是时间，也可能是链接
+    # v5 格式: | 04.14 | **98. 验证二叉搜索树** | `Medium` | 3 | 7分59秒 | 中序遍历解法薄弱 | [LeetCode](...) |
+    # 兼容 5/6/7 列: 分数后面可能跟 时间、备注、链接 的任意组合
     unified_pat = re.compile(
-        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|\s*(.*?)\s*\|'
+        r'\|\s+(\d{2}\.\d{2})\s+\|\s+\*\*(\d+)\.\s+(.*?)\*\*\s+\|\s+`(.*?)`\s+\|\s+(\d)\s+\|'
     )
     # v3.1 分日表格行: | **42. 接雨水** | `Hard` | 3 | [LeetCode](...) |
     table_pat = re.compile(
@@ -68,6 +68,10 @@ def parse_readme(file_path):
     )
     # 分日表格日期头: ### 2026.04.04
     date_pat = re.compile(r'^###\s+(\d{4}\.\d{2}\.\d{2})')
+    # 时间格式
+    time_pat = re.compile(r'\d+分\d+秒')
+    # 链接格式
+    link_pat = re.compile(r'\[LeetCode\]')
 
     if not os.path.exists(file_path):
         print("[WARN] README.md not found")
@@ -85,20 +89,36 @@ def parse_readme(file_path):
                 ).date()
                 continue
 
-            # v4 单表格式 (优先匹配，因为它也包含 table_pat 的模式)
+            # v4/v5 单表格式
             um = unified_pat.search(line)
             if um:
-                date_str, pid, name, diff, score, col6 = um.groups()
+                date_str, pid, name, diff, score = um.groups()
                 d = datetime.datetime.strptime(
                     f"{current_year}.{date_str}", '%Y.%m.%d'
                 ).date()
-                time_val = col6 if col6 and 'LeetCode' not in col6 else ""
+
+                # 从分数之后的所有列中提取 时间、备注
+                # 将分数后面的部分按 | 分割
+                rest = line[um.end():]
+                cols = [c.strip() for c in rest.split('|') if c.strip()]
+
+                time_val = ""
+                note_val = ""
+                for col in cols:
+                    if time_pat.search(col):
+                        time_val = col
+                    elif link_pat.search(col):
+                        pass  # 跳过链接列
+                    else:
+                        note_val = col
+
                 history[int(pid)].append({
                     'id': int(pid),
                     'name': name.strip(),
                     'difficulty': diff,
                     'score': int(score),
                     'time': time_val,
+                    'note': note_val,
                     'date': d,
                 })
                 continue
@@ -215,6 +235,7 @@ def compute_urgency(history):
             'urgency': round(urgency, 2),
             'last_date': last['date'],
             'last_score': last['score'],
+            'last_note': last.get('note', ''),
         })
 
     results.sort(key=lambda x: x['urgency'], reverse=True)
@@ -293,6 +314,8 @@ def print_recommendations(results, num):
         print(f"      掌握度: {r['ems']} | 复习间隔: {r['interval']}天 | "
               f"上次练习: {r['days_ago']}天前 | 状态: {overdue_label}")
         print(f"      历史轨迹: [{scores_str}] | 紧迫度: {r['urgency']}")
+        if r['last_note']:
+            print(f"      备注: {r['last_note']}")
         if idx < len(recs):
             print()
 

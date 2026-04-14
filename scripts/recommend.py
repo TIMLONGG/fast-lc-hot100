@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-智能刷题复习推荐系统 v3.0
+智能刷题复习推荐系统 v4.0
 ========================
 基于 1-5 掌握度分数 + EMS(有效掌握度) + 间隔复习 的推荐引擎。
 
@@ -10,7 +10,8 @@
 核心算法:
   1. EMS (Effective Mastery Score): EWMA + 历史债务衰减
   2. 间隔复习: 基于 EMS 动态计算复习间隔
-  3. 紧迫度: overdue_ratio * difficulty_weight * (6 - EMS)
+  3. 紧迫度: overdue_ratio * difficulty_weight * (6 - EMS) * frequency_factor
+  4. 练习次数衰减: 防止做过多次的题霸占推荐位
 """
 
 import re
@@ -25,7 +26,8 @@ from collections import defaultdict
 NUM_RECOMMEND = 3
 EWMA_ALPHA = 0.5          # 指数加权移动平均的衰减系数
 DEBT_SENSITIVITY = 0.5    # 历史债务的灵敏度
-DEBT_DECAY_RATE = 0.4     # 历史债务的衰减速率
+DEBT_DECAY_RATE = 0.6     # 历史债务的衰减速率 (v4: 0.4→0.6，更快恢复)
+REPEAT_DAMPEN = 0.4       # 练习次数衰减系数，每多练一次紧迫度降低一些
 
 DIFFICULTY_WEIGHT = {'Hard': 1.5, 'Medium': 1.2, 'Easy': 1.0}
 
@@ -35,7 +37,7 @@ INTERVAL_MAP = [
     (2.5, 3),
     (3.5, 5),
     (4.5, 10),
-    (5.1, 20),
+    (5.1, 14),
 ]
 
 # --- 项目路径 -------------------------------------------------------------
@@ -174,7 +176,7 @@ def get_review_interval(ems):
     for threshold, days in INTERVAL_MAP:
         if ems <= threshold:
             return days
-    return 20
+    return 14
 
 
 # --- 紧迫度排序 -----------------------------------------------------------
@@ -195,7 +197,9 @@ def compute_urgency(history):
         overdue_ratio = days_ago / interval if interval > 0 else 0
         diff_w = DIFFICULTY_WEIGHT.get(last['difficulty'], 1.0)
 
-        urgency = overdue_ratio * diff_w * (6 - ems)
+        # v4: 练习次数衰减因子，做过越多次紧迫度越低
+        freq_factor = 1.0 / (1 + REPEAT_DAMPEN * max(0, len(records) - 1))
+        urgency = overdue_ratio * diff_w * (6 - ems) * freq_factor
 
         results.append({
             'id': pid,
@@ -207,6 +211,7 @@ def compute_urgency(history):
             'interval': interval,
             'days_ago': days_ago,
             'overdue': overdue_ratio,
+            'freq_factor': round(freq_factor, 2),
             'urgency': round(urgency, 2),
             'last_date': last['date'],
             'last_score': last['score'],
@@ -293,7 +298,7 @@ def print_recommendations(results, num):
 
     print("-" * W)
     print(f"  评分说明: 5=秒杀 4=顺畅 3=通过 2=艰难 1=未通过")
-    print(f"  公式: 掌握度 = EWMA + 历史债务 | 紧迫度 = 过期比例 * 难度权重 * (6 - 掌握度)")
+    print(f"  公式: 掌握度 = EWMA + 历史债务 | 紧迫度 = 过期比例 * 难度权重 * (6 - 掌握度) * 次数衰减")
     print("-" * W)
 
     return recs

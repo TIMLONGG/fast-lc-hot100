@@ -23,7 +23,7 @@ PROGRESS_PATH = os.path.join(PROJECT_ROOT, 'PROGRESS.md')
 # --- EMS 算法配置 (保持与 recommend.py 一致) ---
 EWMA_ALPHA = 0.5
 DEBT_SENSITIVITY = 0.5
-DEBT_DECAY_RATE = 0.4
+DEBT_DECAY_RATE = 0.6
 
 
 def calculate_ems(scores):

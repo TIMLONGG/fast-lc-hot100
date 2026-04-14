@@ -39,7 +39,7 @@
 | 04.11 | **41. 缺失的第一个正数** | `Hard` | 5 | 7分38秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
 | 04.11 | **128. 最长连续序列** | `Medium` | 5 | 6分41秒 | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
 | 04.11 | **160. 相交链表** | `Easy` | 4 | 8分3秒 | | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
-| 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | 递归解法不熟练 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
+| 04.11 | **206. 反转链表** | `Easy` | 3 | 14分36秒 | | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
 | 04.12 | **76. 最小覆盖子串** | `Hard` | 4 | 8分51秒 | | [LeetCode](https://leetcode.cn/problems/minimum-window-substring/) |
 | 04.12 | **42. 接雨水** | `Hard` | 5 | 2分41秒 | | [LeetCode](https://leetcode.cn/problems/trapping-rain-water/) |
 | 04.12 | **94. 二叉树的中序遍历** | `Easy` | 5 | 2分11秒 | | [LeetCode](https://leetcode.cn/problems/binary-tree-inorder-traversal/) |
@@ -58,14 +58,14 @@
 | 04.14 | **189. 轮转数组** | `Medium` | 1 | 1分55秒 | 翻转数组解法忘记取模 | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
 | 04.14 | **438. 找到字符串中所有字母异位词** | `Medium` | 5 | 6分23秒 | | [LeetCode](https://leetcode.cn/problems/find-all-anagrams-in-a-string/) |
 | 04.14 | **15. 三数之和** | `Medium` | 5 | 4分53秒 | | [LeetCode](https://leetcode.cn/problems/3sum/) |
-| 04.14 | **53. 最大子数组和** | `Medium` | 4 | 6分36秒 | | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
+| 04.14 | **53. 最大子数组和** | `Medium` | 4 | 6分36秒 | 易错点：须先更新答案再更新最小前缀 | [LeetCode](https://leetcode.cn/problems/maximum-subarray/) |
 | 04.14 | **118. 杨辉三角** | `Easy` | 5 | 3分1秒 | | [LeetCode](https://leetcode.cn/problems/pascals-triangle/) |
 | 04.14 | **198. 打家劫舍** | `Medium` | 2 | 6分14秒 | O(1)空间解法薄弱 | [LeetCode](https://leetcode.cn/problems/house-robber/) |
 | 04.14 | **136. 只出现一次的数字** | `Easy` | 5 | 1分0秒 | | [LeetCode](https://leetcode.cn/problems/single-number/) |
-| 04.14 | **54. 螺旋矩阵** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
-| 04.14 | **48. 旋转图像** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
-| 04.14 | **240. 搜索二维矩阵 II** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
+| 04.14 | **54. 螺旋矩阵** | `Medium` | 2 | | 难点：边界控制和规律寻找 | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.14 | **48. 旋转图像** | `Medium` | 1 | | 转置+翻转解法记不清楚 | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
+| 04.14 | **240. 搜索二维矩阵 II** | `Medium` | 1 | | 错误：最后一个小于target的行/列首不一定是答案所在行/列 | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
 | 04.14 | **876. 链表的中间结点** | `Easy` | 4 | | | [LeetCode](https://leetcode.cn/problems/middle-of-the-linked-list/) |
 | 04.14 | **141. 环形链表** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle/) |
-| 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
-| 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |
+| 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | 卡在最后两个序列长度不一致的处理上 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | Floyd判圈：相遇点到入口距离=起点到入口距离 | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |

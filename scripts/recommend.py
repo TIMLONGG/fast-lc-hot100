@@ -372,17 +372,21 @@ def generate_notebook(recs, target_date):
 
     for r in recs:
         diff_letter = r['difficulty'][0]
+        source = [
+            f"# {r['id']}. {r['name']}\n",
+            f"# {diff_letter}\n",
+            "# \n",
+        ]
+        if r.get('last_note'):
+            source.append(f"# 上次备注: {r['last_note']}\n")
+
         cells.append({
             "cell_type": "code",
             "execution_count": None,
             "id": str(uuid.uuid4()),
             "metadata": {},
             "outputs": [],
-            "source": [
-                f"# {r['id']}. {r['name']}\n",
-                f"# {diff_letter}\n",
-                "# \n",
-            ]
+            "source": source
         })
 
     # New section
@@ -440,5 +444,11 @@ if __name__ == "__main__":
 
     # 自动生成当天的 notebook (如果不存在)
     today = datetime.date.today()
-    if recs:
+    folder = os.path.join(PROJECT_ROOT, "notebook", str(today.year))
+    filename = f"code_{today.strftime('%m%d')}.ipynb"
+    file_path = os.path.join(folder, filename)
+
+    if recs and not os.path.exists(file_path):
         generate_notebook(recs, today)
+    elif os.path.exists(file_path):
+        print(f"\n  [跳过] Notebook 已存在，未覆盖: {os.path.relpath(file_path, PROJECT_ROOT)}")

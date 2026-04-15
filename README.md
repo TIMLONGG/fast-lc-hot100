@@ -69,3 +69,17 @@
 | 04.14 | **141. 环形链表** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/linked-list-cycle/) |
 | 04.14 | **234. 回文链表** | `Easy` | 1 | 16分26秒 | 卡在最后两个序列长度不一致的处理上 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
 | 04.14 | **142. 环形链表 II** | `Medium` | 4 | 24分10秒 | Floyd判圈：相遇点到入口距离=起点到入口距离 | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |
+| 04.15 | **48. 旋转图像** | `Medium` | 5 | 4分1秒 | 先转置再逆序 | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
+| 04.15 | **240. 搜索二维矩阵 II** | `Medium` | 5 | 5分0秒 | 右上搜索到左下，排除法 | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
+| 04.15 | **198. 打家劫舍** | `Medium` | 5 | 6分2秒 | O(1) 空间状态转移 | [LeetCode](https://leetcode.cn/problems/house-robber/) |
+| 04.15 | **54. 螺旋矩阵** | `Medium` | 3 | 11分52秒 | 注意 n, m = m - 1, n 的交替规律 | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.15 | **234. 回文链表** | `Easy` | 4 | 7分7秒 | 翻转后半部分，判断短的走完即可 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 04.15 | **322. 零钱兑换** | `Medium` | 3 | 7分53秒 | | [LeetCode](https://leetcode.cn/problems/coin-change/) |
+| 04.15 | **21. 合并两个有序链表** | `Easy` | 3 | 14分13秒 | 虚拟头节点简化原地操作难度 | [LeetCode](https://leetcode.cn/problems/merge-two-lists/) |
+| 04.15 | **2. 两数相加** | `Medium` | 3 | 35分9秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 04.15 | **19. 删除链表的倒数第 N 个结点** | `Medium` | 5 | 5分47秒 | 快慢指针尺子法，dummy简化头节点处理 | [LeetCode](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/) |
+| 04.15 | **24. 两两交换链表中的节点** | `Medium` | 2 | | 卡在越界细节，须保证后面有两个节点 | [LeetCode](https://leetcode.cn/problems/swap-nodes-in-pairs/) |
+| 04.15 | **92. 反转链表 II** | `Medium` | 1 | 10分11秒 | 注意 p0.next.next 和 p0.next 的重指向 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list-ii/) |
+| 04.15 | **25. K 个一组翻转链表** | `Hard` | 1 | 8分6秒 | 掌握 pre 的迭代更新逻辑 | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
+| 04.15 | **139. 单词拆分** | `Medium` | 4 | 11分51秒 | 优化：应枚举单词长度而非词典字符串 | [LeetCode](https://leetcode.cn/problems/word-break/) |
+| 04.15 | **300. 最长递增子序列** | `Medium` | 2 | | 需熟练掌握 nlogn 的贪心+二分法 | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |

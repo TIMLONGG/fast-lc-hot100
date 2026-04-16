@@ -83,3 +83,8 @@
 | 04.15 | **25. K 个一组翻转链表** | `Hard` | 1 | 8分6秒 | 掌握 pre 的迭代更新逻辑 | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
 | 04.15 | **139. 单词拆分** | `Medium` | 4 | 11分51秒 | 优化：应枚举单词长度而非词典字符串 | [LeetCode](https://leetcode.cn/problems/word-break/) |
 | 04.15 | **300. 最长递增子序列** | `Medium` | 2 | | 需熟练掌握 nlogn 的贪心+二分法 | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
+| 04.16 | **98. 验证二叉搜索树** | `Medium` | 4 | 3分54秒 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.16 | **25. K 个一组翻转链表** | `Hard` | 4 | 10分49秒 | | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
+| 04.16 | **189. 轮转数组** | `Medium` | 3 | 2分58秒 | 记得取模！！！ | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.16 | **92. 反转链表 II** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/reverse-linked-list-ii/) |
+| 04.16 | **230. 二叉搜索树中第 K 小的元素** | `Medium` | 5 | 7分27秒 | | [LeetCode](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/) |

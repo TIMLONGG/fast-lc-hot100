@@ -88,3 +88,9 @@
 | 04.16 | **189. 轮转数组** | `Medium` | 3 | 2分58秒 | 记得取模！！！ | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
 | 04.16 | **92. 反转链表 II** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/reverse-linked-list-ii/) |
 | 04.16 | **230. 二叉搜索树中第 K 小的元素** | `Medium` | 5 | 7分27秒 | | [LeetCode](https://leetcode.cn/problems/kth-smallest-element-in-a-bst/) |
+| 04.18 | **24. 两两交换链表中的节点** | `Medium` | 5 | 5分12秒 | | [LeetCode](https://leetcode.cn/problems/swap-nodes-in-pairs/) |
+| 04.18 | **300. 最长递增子序列** | `Medium` | 5 | 4分26秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
+| 04.18 | **206. 反转链表** | `Easy` | 4 | 3分45秒 | 整体翻转直接返回 pre，不需要 dummy | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
+| 04.18 | **41. 缺失的第一个正数** | `Hard` | 3 | 19分41秒 | 易错点：重复数字判断遗漏，且交换后判断会越界 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.18 | **560. 和为 K 的子数组** | `Medium` | 5 | 2分11秒 | | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
+| 04.18 | **239. 滑动窗口最大值** | `Hard` | 3 | 8分39秒 | 注意先更新答案，再按左边界弹出队首 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |

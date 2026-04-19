@@ -94,3 +94,9 @@
 | 04.18 | **41. 缺失的第一个正数** | `Hard` | 3 | 19分41秒 | 易错点：重复数字判断遗漏，且交换后判断会越界 | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
 | 04.18 | **560. 和为 K 的子数组** | `Medium` | 5 | 2分11秒 | | [LeetCode](https://leetcode.cn/problems/subarray-sum-equals-k/) |
 | 04.18 | **239. 滑动窗口最大值** | `Hard` | 3 | 8分39秒 | 注意先更新答案，再按左边界弹出队首 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.19 | **25. K 个一组翻转链表** | `Hard` | 5 | 3分41秒 | | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
+| 04.19 | **54. 螺旋矩阵** | `Medium` | 4 | 6分8秒 | 两步理解 n,m=m-1,n：先交换方向，再将变成"当前步数"的那个减1 | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.19 | **48. 旋转图像** | `Medium` | 5 | 2分42秒 | i,j → n-j-1,i | [LeetCode](https://leetcode.cn/problems/rotate-image/) |
+| 04.19 | **17. 电话号码的字母组合** | `Medium` | 5 | 6分43秒 | | [LeetCode](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/) |
+| 04.19 | **78. 子集** | `Medium` | 3 | 7分7秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |
+| 04.19 | **131. 分割回文串** | `Medium` | 3 | 9分32秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-partitioning/) |

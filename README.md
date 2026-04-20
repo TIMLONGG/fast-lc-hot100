@@ -100,3 +100,14 @@
 | 04.19 | **17. 电话号码的字母组合** | `Medium` | 5 | 6分43秒 | | [LeetCode](https://leetcode.cn/problems/letter-combinations-of-a-phone-number/) |
 | 04.19 | **78. 子集** | `Medium` | 3 | 7分7秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |
 | 04.19 | **131. 分割回文串** | `Medium` | 3 | 9分32秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-partitioning/) |
+| 04.20 | **240. 搜索二维矩阵 II** | `Medium` | 5 | 2分44秒 | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix-ii/) |
+| 04.20 | **234. 回文链表** | `Easy` | 4 | 10分6秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 04.20 | **92. 反转链表 II** | `Medium` | 4 | 7分52秒 | | [LeetCode](https://leetcode.cn/problems/reverse-linked-list-ii/) |
+| 04.20 | **543. 二叉树的直径** | `Easy` | 4 | 12分34秒 | 核心是区分链长和直径，DFS 一边更新直径一边返回链长 | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |
+| 04.20 | **108. 将有序数组转换为二叉搜索树** | `Easy` | 5 | 4分8秒 | | [LeetCode](https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/) |
+| 04.20 | **77. 组合** | `Medium` | 3 | 10分9秒 | 倒序代码更简单 | [LeetCode](https://leetcode.cn/problems/combinations/) |
+| 04.20 | **39. 组合总和** | `Medium` | 4 | 5分10秒 | 剪枝非常重要 | [LeetCode](https://leetcode.cn/problems/combination-sum/) |
+| 04.20 | **22. 括号生成** | `Medium` | 3 | 22分49秒 | 卡在了右括号何时能选的地方 | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |
+| 04.20 | **46. 全排列** | `Medium` | 4 | 4分24秒 | | [LeetCode](https://leetcode.cn/problems/permutations/) |
+| 04.20 | **51. N 皇后** | `Hard` | 2 | 15分14秒 | main和anti_diag的优化，不要忘记恢复现场 | [LeetCode](https://leetcode.cn/problems/n-queens/) |
+| 04.20 | **79. 单词搜索** | `Medium` | 1 | | 两个优化：Counter预判字符数量、翻转稀有端到前 | [LeetCode](https://leetcode.cn/problems/word-search/) |

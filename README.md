@@ -111,3 +111,4 @@
 | 04.20 | **46. 全排列** | `Medium` | 4 | 4分24秒 | | [LeetCode](https://leetcode.cn/problems/permutations/) |
 | 04.20 | **51. N 皇后** | `Hard` | 2 | 15分14秒 | main和anti_diag的优化，不要忘记恢复现场 | [LeetCode](https://leetcode.cn/problems/n-queens/) |
 | 04.20 | **79. 单词搜索** | `Medium` | 1 | | 两个优化：Counter预判字符数量、翻转稀有端到前 | [LeetCode](https://leetcode.cn/problems/word-search/) |
+| 04.21 | **51. N 皇后** | `Hard` | 2 | 21分11秒 | 依然不够熟练 | [LeetCode](https://leetcode.cn/problems/n-queens/) |

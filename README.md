@@ -112,3 +112,6 @@
 | 04.20 | **51. N 皇后** | `Hard` | 2 | 15分14秒 | main和anti_diag的优化，不要忘记恢复现场 | [LeetCode](https://leetcode.cn/problems/n-queens/) |
 | 04.20 | **79. 单词搜索** | `Medium` | 1 | | 两个优化：Counter预判字符数量、翻转稀有端到前 | [LeetCode](https://leetcode.cn/problems/word-search/) |
 | 04.21 | **51. N 皇后** | `Hard` | 2 | 21分11秒 | 依然不够熟练 | [LeetCode](https://leetcode.cn/problems/n-queens/) |
+| 04.22 | **79. 单词搜索** | `Medium` | 3 | 21分40秒 | 卡点：循环里不能直接 `return dfs(...)`，否则只会走第一个方向；应判断后再 `return True` | [LeetCode](https://leetcode.cn/problems/word-search/) |
+| 04.22 | **322. 零钱兑换** | `Medium` | 5 | 4分23秒 | | [LeetCode](https://leetcode.cn/problems/coin-change/) |
+| 04.22 | **2. 两数相加** | `Medium` | 2 | | 纠结原地修改实现；当前用 dummy + 新建节点法，需继续熟练 | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |

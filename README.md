@@ -115,3 +115,8 @@
 | 04.22 | **79. 单词搜索** | `Medium` | 3 | 21分40秒 | 卡点：循环里不能直接 `return dfs(...)`，否则只会走第一个方向；应判断后再 `return True` | [LeetCode](https://leetcode.cn/problems/word-search/) |
 | 04.22 | **322. 零钱兑换** | `Medium` | 5 | 4分23秒 | | [LeetCode](https://leetcode.cn/problems/coin-change/) |
 | 04.22 | **2. 两数相加** | `Medium` | 2 | | 纠结原地修改实现；当前用 dummy + 新建节点法，需继续熟练 | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 04.23 | **51. N 皇后** | `Hard` | 3 | 14分15秒 | 索引点：Python 可用负数索引，其他语言不行 | [LeetCode](https://leetcode.cn/problems/n-queens/) |
+| 04.23 | **189. 轮转数组** | `Medium` | 4 | 1分42秒 | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 04.23 | **21. 合并两个有序链表** | `Easy` | 5 | 5分35秒 | | [LeetCode](https://leetcode.cn/problems/merge-two-lists/) |
+| 04.23 | **56. 合并区间** | `Medium` | 4 | 4分3秒 | 排序写法：`lambda x: x[0]` | [LeetCode](https://leetcode.cn/problems/merge-intervals/) |
+| 04.23 | **79. 单词搜索** | `Medium` | 4 | 4分56秒 | | [LeetCode](https://leetcode.cn/problems/word-search/) |

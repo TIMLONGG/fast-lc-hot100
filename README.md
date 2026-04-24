@@ -120,3 +120,7 @@
 | 04.23 | **21. 合并两个有序链表** | `Easy` | 5 | 5分35秒 | | [LeetCode](https://leetcode.cn/problems/merge-two-lists/) |
 | 04.23 | **56. 合并区间** | `Medium` | 4 | 4分3秒 | 排序写法：`lambda x: x[0]` | [LeetCode](https://leetcode.cn/problems/merge-intervals/) |
 | 04.23 | **79. 单词搜索** | `Medium` | 4 | 4分56秒 | | [LeetCode](https://leetcode.cn/problems/word-search/) |
+| 04.24 | **198. 打家劫舍** | `Medium` | 5 | 2分9秒 | | [LeetCode](https://leetcode.cn/problems/house-robber/) |
+| 04.24 | **49. 字母异位词分组** | `Medium` | 4 | 4分32秒 | sorted返回对象是列表，需要转成str才能作key | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
+| 04.24 | **98. 验证二叉搜索树** | `Medium` | 4 | 3分54秒 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
+| 04.24 | **78. 子集** | `Medium` | 4 | 3分53秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |

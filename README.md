@@ -6,7 +6,7 @@
 | 日期 | 题目 | 难度 | 分数 | 时间 | 备注 | 链接 |
 |------|------|------|:----:|:----:|------|------|
 | 04.04 | **1. 两数之和** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/two-sum/) |
-| 04.04 | **49. 字母异位词分组** | `Easy` | 4 | | | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
+| 04.04 | **49. 字母异位词分组** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
 | 04.04 | **128. 最长连续序列** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/longest-consecutive-sequence/) |
 | 04.04 | **283. 移动零** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/move-zeroes/) |
 | 04.04 | **11. 盛最多水的容器** | `Medium` | 5 | | | [LeetCode](https://leetcode.cn/problems/container-with-most-water/) |

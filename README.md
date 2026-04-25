@@ -124,3 +124,8 @@
 | 04.24 | **49. 字母异位词分组** | `Medium` | 4 | 4分32秒 | sorted返回对象是列表，需要转成str才能作key | [LeetCode](https://leetcode.cn/problems/group-anagrams/) |
 | 04.24 | **98. 验证二叉搜索树** | `Medium` | 4 | 3分54秒 | | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
 | 04.24 | **78. 子集** | `Medium` | 4 | 3分53秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |
+| 04.25 | **131. 分割回文串** | `Medium` | 3 | 16分14秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-partitioning/) |
+| 04.25 | **77. 组合** | `Medium` | 4 | 5分26秒 | 两种做法都需要掌握，尤其是枚举选哪个的剪枝 | [LeetCode](https://leetcode.cn/problems/combinations/) |
+| 04.25 | **22. 括号生成** | `Medium` | 4 | 4分42秒 | dfs里面用两个参数 | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |
+| 04.25 | **2. 两数相加** | `Medium` | 1 | 17分24秒 | 递归迭代都需要着重加强 | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 04.25 | **24. 两两交换链表中的节点** | `Medium` | 4 | 6分36秒 | 两两交换没必要用反转链表那一套 | [LeetCode](https://leetcode.cn/problems/swap-nodes-in-pairs/) |

@@ -132,3 +132,6 @@
 | 04.26 | **300. 最长递增子序列** | `Medium` | 5 | 2分15秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
 | 04.26 | **41. 缺失的第一个正数** | `Hard` | 5 | 6分13秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
 | 04.26 | **2. 两数相加** | `Medium` | 4 | 5分28秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 04.27 | **51. N 皇后** | `Hard` | 5 | 6分32秒 | | [LeetCode](https://leetcode.cn/problems/n-queens/) |
+| 04.27 | **25. K 个一组翻转链表** | `Hard` | 5 | 4分17秒 | | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
+| 04.27 | **102. 二叉树的层序遍历** | `Medium` | 4 | 8分26秒 | | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |

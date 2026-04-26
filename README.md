@@ -129,3 +129,6 @@
 | 04.25 | **22. 括号生成** | `Medium` | 4 | 4分42秒 | dfs里面用两个参数 | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |
 | 04.25 | **2. 两数相加** | `Medium` | 1 | 17分24秒 | 递归迭代都需要着重加强 | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
 | 04.25 | **24. 两两交换链表中的节点** | `Medium` | 4 | 6分36秒 | 两两交换没必要用反转链表那一套 | [LeetCode](https://leetcode.cn/problems/swap-nodes-in-pairs/) |
+| 04.26 | **300. 最长递增子序列** | `Medium` | 5 | 2分15秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
+| 04.26 | **41. 缺失的第一个正数** | `Hard` | 5 | 6分13秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.26 | **2. 两数相加** | `Medium` | 4 | 5分28秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |

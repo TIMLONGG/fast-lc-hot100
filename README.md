@@ -129,9 +129,6 @@
 | 04.25 | **22. 括号生成** | `Medium` | 4 | 4分42秒 | dfs里面用两个参数 | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |
 | 04.25 | **2. 两数相加** | `Medium` | 1 | 17分24秒 | 递归迭代都需要着重加强 | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
 | 04.25 | **24. 两两交换链表中的节点** | `Medium` | 4 | 6分36秒 | 两两交换没必要用反转链表那一套 | [LeetCode](https://leetcode.cn/problems/swap-nodes-in-pairs/) |
-| 04.26 | **300. 最长递增子序列** | `Medium` | 5 | 2分15秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
-| 04.26 | **41. 缺失的第一个正数** | `Hard` | 5 | 6分13秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
-| 04.26 | **2. 两数相加** | `Medium` | 4 | 5分28秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
-| 04.27 | **51. N 皇后** | `Hard` | 5 | 6分32秒 | | [LeetCode](https://leetcode.cn/problems/n-queens/) |
-| 04.27 | **25. K 个一组翻转链表** | `Hard` | 5 | 4分17秒 | | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
-| 04.27 | **102. 二叉树的层序遍历** | `Medium` | 4 | 8分26秒 | | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |
+| 04.28 | **239. 滑动窗口最大值** | `Hard` | 3 | 8分37秒 | left 应该通过i来计算，我一开始写成q[-1]了，可能会影响速度 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
+| 04.28 | **54. 螺旋矩阵** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
+| 04.28 | **206. 反转链表** | `Easy` | 4 | 2分39秒 | 又新建dummy了。 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |

@@ -132,3 +132,8 @@
 | 04.28 | **239. 滑动窗口最大值** | `Hard` | 3 | 8分37秒 | left 应该通过i来计算，我一开始写成q[-1]了，可能会影响速度 | [LeetCode](https://leetcode.cn/problems/sliding-window-maximum/) |
 | 04.28 | **54. 螺旋矩阵** | `Medium` | 4 | | | [LeetCode](https://leetcode.cn/problems/spiral-matrix/) |
 | 04.28 | **206. 反转链表** | `Easy` | 4 | 2分39秒 | 又新建dummy了。 | [LeetCode](https://leetcode.cn/problems/reverse-linked-list/) |
+| 04.29 | **2. 两数相加** | `Medium` | 4 | 6分55秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 04.29 | **51. N 皇后** | `Hard` | 5 | 4分24秒 | | [LeetCode](https://leetcode.cn/problems/n-queens/) |
+| 04.29 | **300. 最长递增子序列** | `Medium` | 5 | 2分18秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
+| 04.29 | **34. 在排序数组中查找元素的第一个和最后一个位置** | `Medium` | 4 | 6分59秒 | 倾向使用闭区间写法；lower_bound 应用 `nums[mid] < t` 判断，返回第一个大于等于 t 的位置 | [LeetCode](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) |
+| 04.29 | **162. 寻找峰值** | `Medium` | 4 | 12分50秒 | 通过循环不变量判断最终返回 l 还是 r，关键看答案是否包含在边界的“及其”一侧 | [LeetCode](https://leetcode.cn/problems/find-peak-element/) |

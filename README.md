@@ -137,3 +137,5 @@
 | 04.29 | **300. 最长递增子序列** | `Medium` | 5 | 2分18秒 | | [LeetCode](https://leetcode.cn/problems/longest-increasing-subsequence/) |
 | 04.29 | **34. 在排序数组中查找元素的第一个和最后一个位置** | `Medium` | 4 | 6分59秒 | 倾向使用闭区间写法；lower_bound 应用 `nums[mid] < t` 判断，返回第一个大于等于 t 的位置 | [LeetCode](https://leetcode.cn/problems/find-first-and-last-position-of-element-in-sorted-array/) |
 | 04.29 | **162. 寻找峰值** | `Medium` | 4 | 12分50秒 | 通过循环不变量判断最终返回 l 还是 r，关键看答案是否包含在边界的“及其”一侧 | [LeetCode](https://leetcode.cn/problems/find-peak-element/) |
+| 04.30 | **41. 缺失的第一个正数** | `Hard` | 4 | 6分13秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
+| 04.30 | **25. K 个一组翻转链表** | `Hard` | 3 | 17分22秒 | 有些生疏了，最后把 `p0 = nxt` 写成 `p0 = p0.next` 的低级错误 | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |

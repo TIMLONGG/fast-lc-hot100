@@ -139,3 +139,10 @@
 | 04.29 | **162. 寻找峰值** | `Medium` | 4 | 12分50秒 | 通过循环不变量判断最终返回 l 还是 r，关键看答案是否包含在边界的“及其”一侧 | [LeetCode](https://leetcode.cn/problems/find-peak-element/) |
 | 04.30 | **41. 缺失的第一个正数** | `Hard` | 4 | 6分13秒 | | [LeetCode](https://leetcode.cn/problems/first-missing-positive/) |
 | 04.30 | **25. K 个一组翻转链表** | `Hard` | 3 | 17分22秒 | 有些生疏了，最后把 `p0 = nxt` 写成 `p0 = p0.next` 的低级错误 | [LeetCode](https://leetcode.cn/problems/reverse-nodes-in-k-group/) |
+| 05.02 | **92. 反转链表 II** | `Medium` | 5 | 3分45秒 | | [LeetCode](https://leetcode.cn/problems/reverse-linked-list-ii/) |
+| 05.02 | **102. 二叉树的层序遍历** | `Medium` | 4 | 5分12秒 | 需要注意空树的判定 | [LeetCode](https://leetcode.cn/problems/binary-tree-level-order-traversal/) |
+| 05.02 | **142. 环形链表 II** | `Medium` | 4 | 4分31秒 | 如果相遇点就在 head 节点要直接返回，所以先判断再移动 | [LeetCode](https://leetcode.cn/problems/linked-list-cycle-ii/) |
+| 05.02 | **74. 搜索二维矩阵** | `Medium` | 3 | | 关键在坐标转换，也可以用排除法但二分复杂度一般更低 | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix/) |
+| 05.02 | **33. 搜索旋转排序数组** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/search-in-rotated-sorted-array/) |
+| 05.02 | **153. 寻找旋转排序数组中的最小值** | `Medium` | 4 | 1分10秒 | | [LeetCode](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/) |
+| 05.02 | **4. 寻找两个正序数组的中位数** | `Hard` | 1 | | hot100 最难题目，核心是固定左半元素数量后通过 i/j 建立二分循环不变量 | [LeetCode](https://leetcode.cn/problems/median-of-two-sorted-arrays/) |

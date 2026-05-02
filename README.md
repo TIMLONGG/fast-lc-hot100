@@ -146,3 +146,6 @@
 | 05.01 | **33. 搜索旋转排序数组** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/search-in-rotated-sorted-array/) |
 | 05.01 | **153. 寻找旋转排序数组中的最小值** | `Medium` | 4 | 1分10秒 | | [LeetCode](https://leetcode.cn/problems/find-minimum-in-rotated-sorted-array/) |
 | 05.01 | **4. 寻找两个正序数组的中位数** | `Hard` | 1 | | hot100 最难题目，核心是固定左半元素数量后通过 i/j 建立二分循环不变量 | [LeetCode](https://leetcode.cn/problems/median-of-two-sorted-arrays/) |
+| 05.02 | **4. 寻找两个正序数组的中位数** | `Hard` | 4 | 17分28秒 | 为什么要先保证在短数组上二分：避免 i 范围过大导致 j 越界 | [LeetCode](https://leetcode.cn/problems/median-of-two-sorted-arrays/) |
+| 05.02 | **33. 搜索旋转排序数组** | `Medium` | 4 | 9分42秒 | | [LeetCode](https://leetcode.cn/problems/search-in-rotated-sorted-array/) |
+| 05.02 | **543. 二叉树的直径** | `Easy` | 4 | 11分49秒 | | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |

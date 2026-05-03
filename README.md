@@ -149,3 +149,12 @@
 | 05.02 | **4. 寻找两个正序数组的中位数** | `Hard` | 4 | 17分28秒 | 为什么要先保证在短数组上二分：避免 i 范围过大导致 j 越界 | [LeetCode](https://leetcode.cn/problems/median-of-two-sorted-arrays/) |
 | 05.02 | **33. 搜索旋转排序数组** | `Medium` | 4 | 9分42秒 | | [LeetCode](https://leetcode.cn/problems/search-in-rotated-sorted-array/) |
 | 05.02 | **543. 二叉树的直径** | `Easy` | 4 | 11分49秒 | | [LeetCode](https://leetcode.cn/problems/diameter-of-binary-tree/) |
+| 05.03 | **234. 回文链表** | `Easy` | 4 | 8分17秒 | slow/fast 指针与 dummy（p0）定义不要混淆 | [LeetCode](https://leetcode.cn/problems/palindrome-linked-list/) |
+| 05.03 | **79. 单词搜索** | `Medium` | 4 | 14分25秒 | | [LeetCode](https://leetcode.cn/problems/word-search/) |
+| 05.03 | **160. 相交链表** | `Easy` | 3 | 7分57秒 | 即使不相交，最后也会走到空节点（None == None） | [LeetCode](https://leetcode.cn/problems/intersection-of-two-linked-lists/) |
+| 05.03 | **139. 单词拆分** | `Medium` | 3 | 20分19秒 | dp 下标需要画图理解：判断 `dp[i]` 时检查子串 `s[j:i]` | [LeetCode](https://leetcode.cn/problems/word-break/) |
+| 05.03 | **131. 分割回文串** | `Medium` | 3 | 11分44秒 | | [LeetCode](https://leetcode.cn/problems/palindrome-partitioning/) |
+| 05.03 | **21. 合并两个有序链表** | `Easy` | 5 | 3分33秒 | | [LeetCode](https://leetcode.cn/problems/merge-two-sorted-lists/) |
+| 05.03 | **148. 排序链表** | `Medium` | 2 | | 注意寻找中点后要断开左侧链表与中点连接 | [LeetCode](https://leetcode.cn/problems/sort-list/) |
+| 05.03 | **1143. 最长公共子序列** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
+| 05.03 | **72. 编辑距离** | `Medium` | 3 | 15分29秒 | | [LeetCode](https://leetcode.cn/problems/edit-distance/) |

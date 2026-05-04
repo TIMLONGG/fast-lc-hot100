@@ -158,3 +158,6 @@
 | 05.03 | **148. 排序链表** | `Medium` | 2 | | 注意寻找中点后要断开左侧链表与中点连接 | [LeetCode](https://leetcode.cn/problems/sort-list/) |
 | 05.03 | **1143. 最长公共子序列** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
 | 05.03 | **72. 编辑距离** | `Medium` | 3 | 15分29秒 | | [LeetCode](https://leetcode.cn/problems/edit-distance/) |
+| 05.04 | **1143. 最长公共子序列** | `Medium` | 2 | 9分55秒 | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
+| 05.04 | **148. 排序链表** | `Medium` | 5 | 8分5秒 | | [LeetCode](https://leetcode.cn/problems/sort-list/) |
+| 05.04 | **78. 子集** | `Medium` | 5 | 1分58秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |

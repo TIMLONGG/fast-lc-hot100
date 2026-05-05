@@ -161,3 +161,7 @@
 | 05.04 | **1143. 最长公共子序列** | `Medium` | 2 | 9分55秒 | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
 | 05.04 | **148. 排序链表** | `Medium` | 5 | 8分5秒 | | [LeetCode](https://leetcode.cn/problems/sort-list/) |
 | 05.04 | **78. 子集** | `Medium` | 5 | 1分58秒 | | [LeetCode](https://leetcode.cn/problems/subsets/) |
+| 05.05 | **101. 对称二叉树** | `Easy` | 5 | 4分59秒 | | [LeetCode](https://leetcode.cn/problems/symmetric-tree/) |
+| 05.05 | **70. 爬楼梯** | `Easy` | 5 | 3分56秒 | | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |
+| 05.05 | **77. 组合** | `Medium` | 2 | 14分31秒 | | [LeetCode](https://leetcode.cn/problems/combinations/) |
+| 05.05 | **22. 括号生成** | `Medium` | 5 | 4分26秒 | | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |

@@ -165,3 +165,6 @@
 | 05.05 | **70. 爬楼梯** | `Easy` | 5 | 3分56秒 | | [LeetCode](https://leetcode.cn/problems/climbing-stairs/) |
 | 05.05 | **77. 组合** | `Medium` | 2 | 14分31秒 | | [LeetCode](https://leetcode.cn/problems/combinations/) |
 | 05.05 | **22. 括号生成** | `Medium` | 5 | 4分26秒 | | [LeetCode](https://leetcode.cn/problems/generate-parentheses/) |
+| 05.06 | **1143. 最长公共子序列** | `Medium` | 5 | 1分46秒 | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
+| 05.06 | **2. 两数相加** | `Medium` | 5 | 4分24秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
+| 05.06 | **189. 轮转数组** | `Medium` | 4 | 2分33秒 | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |

@@ -168,3 +168,9 @@
 | 05.06 | **1143. 最长公共子序列** | `Medium` | 5 | 1分46秒 | | [LeetCode](https://leetcode.cn/problems/longest-common-subsequence/) |
 | 05.06 | **2. 两数相加** | `Medium` | 5 | 4分24秒 | | [LeetCode](https://leetcode.cn/problems/add-two-numbers/) |
 | 05.06 | **189. 轮转数组** | `Medium` | 4 | 2分33秒 | | [LeetCode](https://leetcode.cn/problems/rotate-array/) |
+| 05.07 | **74. 搜索二维矩阵** | `Medium` | 5 | 14分16秒 | | [LeetCode](https://leetcode.cn/problems/search-a-2d-matrix/) |
+| 05.07 | **39. 组合总和** | `Medium` | 5 | 9分44秒 | | [LeetCode](https://leetcode.cn/problems/combination-sum/) |
+| 05.07 | **46. 全排列** | `Medium` | 4 | 5分43秒 | | [LeetCode](https://leetcode.cn/problems/permutations/) |
+| 05.07 | **215. 数组中的第K个最大元素** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/kth-largest-element-in-an-array/) |
+| 05.07 | **912. 排序数组** | `Medium` | 2 | | | [LeetCode](https://leetcode.cn/problems/sort-an-array/) |
+| 05.07 | **20. 有效的括号** | `Easy` | 5 | 2分49秒 | | [LeetCode](https://leetcode.cn/problems/valid-parentheses/) |

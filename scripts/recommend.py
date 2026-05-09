@@ -31,43 +31,6 @@ REPEAT_DAMPEN = 0.4       # 练习次数衰减系数，每多练一次紧迫度�
 
 DIFFICULTY_WEIGHT = {'Hard': 1.5, 'Medium': 1.2, 'Easy': 1.0}
 
-# Hot 100 题目 ID → 英文 slug，用于构造 LeetCode 链接
-_PROBLEM_SLUGS = {
-    1: "two-sum", 2: "add-two-numbers", 3: "longest-substring-without-repeating-characters",
-    4: "median-of-two-sorted-arrays", 11: "container-with-most-water", 15: "3sum",
-    17: "letter-combinations-of-a-phone-number", 19: "remove-nth-node-from-end-of-list",
-    21: "merge-two-sorted-lists", 22: "generate-parentheses", 24: "swap-nodes-in-pairs",
-    25: "reverse-nodes-in-k-group", 33: "search-in-rotated-sorted-array",
-    34: "find-first-and-last-position-of-element-in-sorted-array", 39: "combination-sum",
-    41: "first-missing-positive", 42: "trapping-rain-water", 46: "permutations",
-    48: "rotate-image", 49: "group-anagrams", 51: "n-queens", 53: "maximum-subarray",
-    54: "spiral-matrix", 56: "merge-intervals", 70: "climbing-stairs",
-    72: "edit-distance", 73: "set-matrix-zeroes", 74: "search-a-2d-matrix",
-    76: "minimum-window-substring", 77: "combinations", 78: "subsets",
-    79: "word-search", 92: "reverse-linked-list-ii", 94: "binary-tree-inorder-traversal",
-    98: "validate-binary-search-tree", 101: "symmetric-tree",
-    102: "binary-tree-level-order-traversal", 104: "maximum-depth-of-binary-tree",
-    108: "convert-sorted-array-to-binary-search-tree", 118: "pascals-triangle",
-    128: "longest-consecutive-sequence", 131: "palindrome-partitioning",
-    136: "single-number", 139: "word-break", 141: "linked-list-cycle",
-    142: "linked-list-cycle-ii", 148: "sort-list", 153: "find-minimum-in-rotated-sorted-array",
-    160: "intersection-of-two-linked-lists", 162: "find-peak-element",
-    189: "rotate-array", 198: "house-robber", 206: "reverse-linked-list",
-    226: "invert-binary-tree", 230: "kth-smallest-element-in-a-bst",
-    234: "palindrome-linked-list", 239: "sliding-window-maximum",
-    240: "search-a-2d-matrix-ii", 283: "move-zeroes",
-    300: "longest-increasing-subsequence", 322: "coin-change",
-    438: "find-all-anagrams-in-a-string", 543: "diameter-of-binary-tree",
-    560: "subarray-sum-equals-k", 876: "middle-of-the-linked-list",
-    1143: "longest-common-subsequence",
-}
-_LC_URL_TPL = "https://leetcode.cn/problems/{slug}/description/"
-
-
-def get_problem_url(pid):
-    slug = _PROBLEM_SLUGS.get(pid)
-    return _LC_URL_TPL.format(slug=slug) if slug else None
-
 
 # EMS -> 建议复习间隔 (天)
 INTERVAL_MAP = [
@@ -109,7 +72,7 @@ def parse_readme(file_path):
     # 时间格式
     time_pat = re.compile(r'\d+分\d+秒')
     # 链接格式
-    link_pat = re.compile(r'\[LeetCode\]')
+    link_pat = re.compile(r'\[LeetCode\]\((.*?)\)')
 
     if not os.path.exists(file_path):
         print("[WARN] README.md not found")
@@ -142,13 +105,16 @@ def parse_readme(file_path):
 
                 time_val = ""
                 note_val = ""
+                link_val = ""
                 for col in cols:
                     if time_pat.search(col):
                         time_val = col
-                    elif link_pat.search(col):
-                        pass  # 跳过链接列
                     else:
-                        note_val = col
+                        lm = link_pat.search(col)
+                        if lm:
+                            link_val = lm.group(1)
+                        else:
+                            note_val = col
 
                 history[int(pid)].append({
                     'id': int(pid),
@@ -157,6 +123,7 @@ def parse_readme(file_path):
                     'score': int(score),
                     'time': time_val,
                     'note': note_val,
+                    'url': link_val,
                     'date': d,
                 })
                 continue
@@ -166,12 +133,14 @@ def parse_readme(file_path):
                 tm = table_pat.search(line)
                 if tm:
                     pid, name, diff, score = tm.groups()
+                    lm = link_pat.search(line)
                     history[int(pid)].append({
                         'id': int(pid),
                         'name': name.strip(),
                         'difficulty': diff,
                         'score': int(score),
                         'date': current_date,
+                        'url': lm.group(1) if lm else '',
                     })
 
     return history
@@ -274,7 +243,7 @@ def compute_urgency(history):
             'last_date': last['date'],
             'last_score': last['score'],
             'last_note': last.get('note', ''),
-            'url': get_problem_url(pid),
+            'url': last.get('url', ''),
         })
 
     results.sort(key=lambda x: x['urgency'], reverse=True)

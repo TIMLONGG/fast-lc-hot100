@@ -342,11 +342,12 @@ def print_recommendations(results, num):
 def generate_notebook(recs, target_date):
     """
     根据推荐结果，自动生成当天的 ipynb 文件。
-    路径: notebook/<year>/code_<MMDD>.ipynb
+    路径: notebook/<year>/<month>/code_<MMDD>.ipynb
     """
     year_str = target_date.strftime('%Y')
+    month_str = target_date.strftime('%m')
     mmdd_str = target_date.strftime('%m%d')
-    dir_path = os.path.join(NOTEBOOK_DIR, year_str)
+    dir_path = os.path.join(NOTEBOOK_DIR, year_str, month_str)
     file_path = os.path.join(dir_path, f'code_{mmdd_str}.ipynb')
 
     if os.path.exists(file_path):
@@ -454,7 +455,7 @@ if __name__ == "__main__":
 
     # 自动生成当天的 notebook (如果不存在)
     today = datetime.date.today()
-    folder = os.path.join(PROJECT_ROOT, "notebook", str(today.year))
+    folder = os.path.join(PROJECT_ROOT, "notebook", str(today.year), today.strftime('%m'))
     filename = f"code_{today.strftime('%m%d')}.ipynb"
     file_path = os.path.join(folder, filename)
 

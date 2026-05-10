@@ -181,7 +181,7 @@ if __name__ == "__main__":
     # 1. 生成内容
     content = generate_progress_md(problems)
 
-    # 2. 自动归档：保存到 progress/MMDD.md
+    # 2. 自动归档：保存到 progress/YYYY/MM/MMDD.md
     # 找到所有练习记录中的最后一天日期
     all_dates = []
     for p in problems.values():
@@ -189,9 +189,11 @@ if __name__ == "__main__":
     
     if all_dates:
         last_practice_date = max(all_dates)
+        year = last_practice_date.strftime('%Y')
+        month = last_practice_date.strftime('%m')
         mmdd = last_practice_date.strftime('%m%d')
         
-        archive_dir = os.path.join(PROJECT_ROOT, 'progress')
+        archive_dir = os.path.join(PROJECT_ROOT, 'progress', year, month)
         if not os.path.exists(archive_dir):
             os.makedirs(archive_dir)
             

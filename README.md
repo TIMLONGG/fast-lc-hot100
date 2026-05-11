@@ -177,3 +177,4 @@
 | 05.08 | **876. 链表的中间结点** | `Easy` | 5 | | | [LeetCode](https://leetcode.cn/problems/middle-of-the-linked-list/) |
 | 05.09 | **215. 数组中的第K个最大元素** | `Medium` | 1 | | | [LeetCode](https://leetcode.cn/problems/kth-largest-element-in-an-array/) |
 | 05.10 | **72. 编辑距离** | `Medium` | 3 | 3分20秒 | | [LeetCode](https://leetcode.cn/problems/edit-distance/) |
+| 05.11 | **98. 验证二叉搜索树** | `Medium` | 4 | 3分44秒 | 访问和修改 pre 记得加上 self | [LeetCode](https://leetcode.cn/problems/validate-binary-search-tree/) |
